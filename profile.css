@@ -1,0 +1,465 @@
+/* Grundinställningar */
+body {
+  margin: 0;
+  padding: 40px 0;
+  font-family: "Inter", sans-serif;
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+
+  background-color: #030712; /* Very dark base */
+  overflow-x: hidden;
+}
+
+/* SJÄLVA BOXEN - Nu mycket bredare */
+.hero-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 60px; /* Mer luft inuti boxen */
+  border-radius: 24px;
+  max-width: 1100px; /* Här ställer du in bredden */
+  width: 95%;
+  display: flex;
+  align-items: center; /* Centrerar dem i höjdled mot varandra */
+  gap: 50px; /* Avståndet mellan bilden och texten */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* PROFILBILDEN */
+.profile-pic {
+  width: 180px; /* Lite större bild för att matcha den breda boxen */
+  height: 230px;
+  border-radius: 50%;
+  border: 4px solid #1e293b;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  flex-shrink: 0; /* Hindrar bilden från att tryckas ihop */
+}
+
+/* TEXT-CONTAINER */
+.hero-info {
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 10px 0;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  color: #94a3b8;
+  margin-bottom: 25px;
+}
+
+/* KOMPETENSER */
+.competence-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.skill-tag {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* KONTAKT */
+.status-badge {
+  color: #4ade80;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* MOBILANPASSNING */
+@media (max-width: 800px) {
+  .hero-card {
+    flex-direction: column; /* Staplar bilden och texten på varandra på mobilen */
+    text-align: center;
+    padding: 40px;
+  }
+
+  .competence-grid {
+    justify-content: center; /* Centrerar kompetenser på mobilen */
+  }
+}
+
+.hero-contact {
+  margin-top: 2;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 105px;
+  padding-left: 5px;
+}
+
+.hero-contact a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* Denna del ger ikonen lite luft till höger så den inte nuddar texten */
+.hero-contact i {
+  margin-right: 8px;
+  font-size: 15px; /* Gör ikonen aningen större än texten för bättre balans */
+}
+
+.hero-contact a:hover {
+  text-decoration: underline;
+  filter: brightness(1.2); /* Gör att hela länken lyser upp lite vid hover */
+}
+
+/* 
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+/* ERFARENHETSBOXEN */
+
+.experience-box {
+  background-color: #0f172a; /* Samma mörkblå som hero-card */
+  border: 1px solid #1e293b;
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 1100px;
+  width: 100%;
+  margin-top: 10px; /* Avstånd till boxen ovanför */
+}
+
+/* RUBRIKEN */
+.experience-box h2 {
+  color: #38bdf8; /* Ljusblå accent */
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.job-item {
+  margin-bottom: 20px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.job-title {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.job-title b {
+  color: #38bdf8;
+}
+
+.job-date {
+  color: #9bb9df;
+  font-size: 0.9rem;
+}
+
+.job-location {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+/* LISTAN MED PUNKTER */
+.experience-box ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.experience-box li {
+  color: #94a3b8; /* Lättläst grå text */
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* SKILJELINJE MELLAN JOBBEN */
+.job-divider {
+  height: 1px;
+  background-color: #1e293b; /* Diskret linje */
+  margin: 25px 0;
+}
+
+/* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+/*  UTBILDNINGBOX*/
+
+/* UTBILDNINGSBOXEN */
+.education-box {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 1100px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.education-box h2 {
+  color: #38bdf8;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.edu-title {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.edu-title b {
+  color: #38bdf8;
+}
+
+.edu-date {
+  color: #9bb9df;
+  font-size: 0.9rem;
+}
+
+.edu-desc {
+  color: #94a3b8;
+  margin-bottom: 25px;
+}
+
+/* GRID FÖR KURSER */
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Två kolumner */
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.02); /* Mycket subtil bakgrund */
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.kicker {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.course-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.course-category li {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* En liten blå prick framför varje kurs */
+.course-category li::before {
+  content: "•";
+  color: #38bdf8;
+}
+
+/* Mobilanpassning för grid */
+@media (max-width: 600px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*  
+
+
+
+
+
+
+
+
+*/
+
+/* PROJEKTBOXEN */
+.projects-box {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 1100px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.projects-box h2 {
+  color: #38bdf8;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* RUTNÄTET */
+.projects-grid {
+  display: grid;
+  /* Skapar kolumner som är minst 300px breda, men fyller ut om det finns plats */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* ENSKILDA PROJEKTKORT */
+.project-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid #1e293b;
+  padding: 25px;
+  border-radius: 18px;
+  transition: all 0.3s ease; /* Gör att hovringen blir mjuk */
+}
+
+.project-card:hover {
+  transform: translateY(-5px); /* Kortet "lyfter" lite vid hovring */
+  border-color: #38bdf8; /* Kanten blir ljusblå */
+  background-color: rgba(56, 189, 248, 0.05);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.project-icon {
+  font-size: 1.5rem;
+  color: #38bdf8;
+}
+
+.project-links a {
+  color: #94a3b8;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  transition: color 0.2s;
+}
+
+.project-links a:hover {
+  color: #ffffff;
+}
+
+.project-card h3 {
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.project-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* TAGGAR INUTI KORTEN */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tags span {
+  font-size: 0.75rem;
+  background-color: #1e293b;
+  color: #94a3b8;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#canvas-bg {
+  position: fixed; /* Stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Puts it behind everything */
+  pointer-events: none; /* Allows you to click links through the background */
+}
+
+/* GLASS EFFECT: Update your cards so the background is visible through them */
+.hero-card,
+.experience-box,
+.education-box,
+.projects-box {
+  background-color: rgba(15, 23, 42, 0.85); /* Semi-transparent */
+  backdrop-filter: blur(8px); /* Blurs the network behind the cards */
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  border-radius: 24px;
+  padding: 60px;
+  max-width: 1100px;
+  width: 95%;
+  margin-bottom: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}

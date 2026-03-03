@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevin Rasul | Software Developer</title>
+    <link rel="stylesheet" href="profile.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="canvas-bg"></canvas>
+
+    <script>
+      const canvas = document.getElementById("canvas-bg");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize);
+      resize();
+
+      const mouse = { x: null, y: null };
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x > canvas.width) this.x = 0;
+          if (this.x < 0) this.x = canvas.width;
+          if (this.y > canvas.height) this.y = 0;
+          if (this.y < 0) this.y = canvas.height;
+
+          // Interaction with mouse
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 150) {
+            this.x -= dx / 20;
+            this.y -= dy / 20;
+          }
+        }
+        draw() {
+          ctx.fillStyle = "rgba(56, 189, 248, 0.5)";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        for (let i = 0; i < 80; i++) particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          for (let j = i; j < particles.length; j++) {
+            let dx = particles[i].x - particles[j].x;
+            let dy = particles[i].y - particles[j].y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 100) {
+              ctx.strokeStyle = `rgba(56, 189, 248, ${1 - (distance / 100) * 0.2})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      init();
+      animate();
+    </script>
+    <div class="container">
+      <div class="hero-card">
+        <img src="IMG_6983.webp" alt="Kevin Rasul" class="profile-pic" />
+
+        <div class="hero-info">
+          <h1>Kevin Rasul</h1>
+          <p class="hero-subtitle">Software Developer</p>
+
+          <div class="competence-grid">
+            <span class="skill-tag">C# / .NET</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">Information Security</span>
+          </div>
+
+          <div class="hero-contact">
+            <a href="mailto:kevin.rasul@hotmiail.com">
+              <i class="fa-solid fa-envelope"></i> Email
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/kevin-rasul-252a8b273/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+
+            <a href="https://github.com/dreeys" target="_blank">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <section class="experience-box">
+        <h2><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+
+        <div class="job-item">
+          <div class="job-header">
+            <div class="job-title"><b>IT Technician</b> – University West</div>
+            <span class="job-date">Dec 2023 – Present</span>
+          </div>
+          <p class="job-location">Trollhättan · Fixed-term employment</p>
+          <ul>
+            <li>
+              Daily IT support, troubleshooting, and technical problem-solving.
+            </li>
+            <li>
+              Structured ticket management and clear communication with users.
+            </li>
+            <li>
+              Experienced in prioritizing tasks and taking responsibility in a
+              fast-paced environment.
+            </li>
+          </ul>
+        </div>
+
+        <div class="job-divider"></div>
+
+        <div class="job-item">
+          <div class="job-header">
+            <div class="job-title"><b>Retail Associate</b> – Clas Ohlson</div>
+            <span class="job-date">Jun 2025 – Present</span>
+          </div>
+          <p class="job-location">Sales · Customer Service</p>
+          <ul>
+            <li>High-tempo customer service and real-time problem solving.</li>
+            <li>
+              Active teamwork, following operational routines, and taking
+              ownership of tasks.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="education-box">
+        <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div class="edu-title">
+              <b>Systems Development</b> – University West
+            </div>
+            <span class="edu-date">2023 – 2026 (In Progress)</span>
+          </div>
+          <p class="edu-desc">
+            Bachelor's programme focused on modern software engineering, system
+            architecture, and cybersecurity.
+          </p>
+
+          <div class="course-grid">
+            <div class="course-category">
+              <p class="kicker">Development & Data</p>
+              <ul>
+                <li>Advanced C# Programming</li>
+                <li>Web Development (React/HTML/CSS)</li>
+                <li>Databases & Design (SQL)</li>
+              </ul>
+            </div>
+
+            <div class="course-category">
+              <p class="kicker">Systems & Security</p>
+              <ul>
+                <li>Information Security</li>
+                <li>System Architecture & Integration</li>
+                <li>UX & User Centered Design</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-box">
+        <h2><i class="fa-solid fa-code"></i> Featured Projects</h2>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <i class="fa-solid fa-dumbbell project-icon"></i>
+              <div class="project-links">
+                <a href="https://github.com/dreeys/NeoGym" target="_blank"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+              </div>
+            </div>
+            <h3>Gym Progress App</h3>
+            <p>
+              A mobile application where users can track their gym progress
+              interactively, including photo storage for visual tracking.
+            </p>
+            <div class="project-tags">
+              <span>React</span>
+              <span>JavaScript</span>
+              <span>Mobile Design</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <i class="fa-solid fa-vr-cardboard project-icon"></i>
+              <div class="project-links">
+                <a href="https://github.com/dreeys/VRproject" target="_blank"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+              </div>
+            </div>
+            <h3>VR Game</h3>
+            <p>
+              An interactive virtual reality experience developed for immersive
+              gameplay.
+            </p>
+            <div class="project-tags">
+              <span>Unreal Engine</span>
+              <span>C++</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <i class="fa-solid fa-gamepad project-icon"></i>
+              <div class="project-links">
+                <a href="https://github.com/dreeys/ZombieGame" target="_blank"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+              </div>
+            </div>
+            <h3>Unity Game Project</h3>
+            <p>
+              A survival game focusing on C# logic, custom physics, and gameplay
+              optimization.
+            </p>
+            <div class="project-tags">
+              <span>C#</span>
+              <span>Unity</span>
+              <span>Game Dev</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <i class="fa-solid fa-address-card project-icon"></i>
+              <div class="project-links">
+                <a href="https://github.com/dreeys" target="_blank"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+              </div>
+            </div>
+            <h3>Digital CV / Portfolio</h3>
+            <p>
+              My personal portfolio website, designed to be fast, responsive,
+              and reflect my identity as a developer.
+            </p>
+            <div class="project-tags">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        style="
+          text-align: center;
+          padding: 40px;
+          color: #64748b;
+          font-size: 0.9rem;
+        "
+      >
+        © 2026 Kevin Rasul | Built with passion for code.
+      </footer>
+    </div>
+  </body>
+</html>
