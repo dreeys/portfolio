@@ -80,19 +80,6 @@ h1 {
   letter-spacing: 1px;
 }
 
-/* MOBILANPASSNING */
-@media (max-width: 800px) {
-  .hero-card {
-    flex-direction: column; /* Staplar bilden och texten på varandra på mobilen */
-    text-align: center;
-    padding: 40px;
-  }
-
-  .competence-grid {
-    justify-content: center; /* Centrerar kompetenser på mobilen */
-  }
-}
-
 .hero-contact {
   margin-top: 2;
   font-size: 16px;
@@ -462,4 +449,54 @@ h1 {
   width: 95%;
   margin-bottom: 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* MOBILANPASSNING */
+@media (max-width: 800px) {
+  body {
+    padding: 20px 0; /* Mindre marginal i topp/botten */
+  }
+
+  .hero-card,
+  .experience-box,
+  .education-box,
+  .projects-box {
+    width: 88%; /* Sänkt från 95/100% för mer luft på sidorna */
+    margin: 0 auto 15px auto;
+    padding: 30px 20px;
+    gap: 30px; /* Minskar gapet mellan bild och text i hero-card */
+  }
+
+  .hero-contact {
+    flex-direction: column; /* Stapla mail, LinkedIn, GitHub */
+    gap: 15px;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .job-header,
+  .edu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  job-date,
+  .edu-date {
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr; /* Tvinga ett projekt per rad */
+    }
+
+    .course-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }
